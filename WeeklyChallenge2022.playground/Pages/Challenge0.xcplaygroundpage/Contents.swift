@@ -19,3 +19,17 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+for n in 1...100 {
+    let mult3 = n % 3 == 0
+    let mult5 = n % 5 == 0
+    
+    if mult3 && mult5 {
+        print("fizzbuzz")
+    } else if mult3 {
+        print("fizz")
+    } else if mult5 {
+        print("buzz")
+    } else {
+        print(n)
+    }
+}
