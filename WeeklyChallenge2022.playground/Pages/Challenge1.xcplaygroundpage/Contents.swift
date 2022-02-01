@@ -19,3 +19,21 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func esAnagrama(_ palabra1: String, de palabra2: String) -> Bool{
+    if palabra1.lowercased().elementsEqual(palabra2.lowercased()){
+        return false
+    }
+    
+    let palabra1Ordenada = palabra1.lowercased().sorted()
+    let palabra2Ordenada = palabra2.lowercased().sorted()
+    
+    return palabra1Ordenada.elementsEqual(palabra2Ordenada)
+}
+
+let palabras = ["ropa", "", "pAro", "pArodiA"]
+
+for palabra in palabras {
+    for anagrama in palabras {
+        print("\(palabra) y \(anagrama)", esAnagrama(palabra, de: anagrama) ? "son anagramas": "no son anagramas")
+    }
+}
