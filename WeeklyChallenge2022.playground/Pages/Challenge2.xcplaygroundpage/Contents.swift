@@ -18,3 +18,23 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func fibonacci(n: Int){
+    var n0: Int64 = 0
+    var n1: Int64 = 1
+    
+    for index in 0..<n {
+        switch index {
+        case 0, 1:
+            print(index)
+        default:
+            let fib = n0 + n1
+            n0 = n1
+            n1 = fib
+            
+            print(fib)
+        }
+    }
+}
+
+fibonacci(n: 50)
