@@ -17,3 +17,33 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func isPrime(n: Int) -> Bool {
+    if n < 0 {
+        return isPrime(n: n * -1)
+    }
+    if n < 2 {
+        return false
+    }
+    if n == 2 {
+        return true
+    }
+    
+    let half = (n / 2) + 1
+    var isPrimeNumber = true
+    
+    for i in 2...half {
+        if n % i == 0 {
+            isPrimeNumber = false
+            break
+        }
+    }
+    
+    return isPrimeNumber
+}
+
+for i in 1...100 {
+    if isPrime(n: i) {
+        print(i)
+    }
+}
