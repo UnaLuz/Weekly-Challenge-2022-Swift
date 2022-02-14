@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 /*
  * Reto #5
@@ -18,3 +19,40 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+func printAspectRatio(of urlString: String){
+    if let url = URL(string: urlString){
+        do {
+            let data = try Data(contentsOf: url)
+            if let image = UIImage(data: data){
+                print("Aspect ratio:", aspectRatio(img: image))
+            }
+        } catch {
+            print("An error occured processing the url \(urlString): \(error)")
+        }
+    }
+}
+
+func aspectRatio(img: UIImage) -> String{
+    let width = Int(img.size.width)
+    let height = Int(img.size.height)
+    
+    let mcd: Int = getMCD(a: width, b: height)
+    
+    return "\(width / mcd):\(height / mcd)"
+}
+
+func getMCD(a: Int, b: Int) -> Int {
+    var a = a
+    var b = b
+    while b != 0 {
+        let temp = b
+        b = a % b
+        a = temp
+    }
+    return a
+}
+
+let urlString = "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png"
+
+printAspectRatio(of: urlString)
